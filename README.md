@@ -126,6 +126,13 @@ The following compilers should work:
 	 	
 			brew install conan
 	
+	- Ubuntu:
+	 		apt install python3-pip
+	 		pip3 install --user conan
+	 		# Add conan to path if not added:
+	 		sudo update-alternatives --install /usr/bin/conan conan ~/.local/bin/conan 10
+        	sudo update-alternatives --config conan
+
 	</details>
 
 3. [CMake 3.15+](https://cmake.org/)
