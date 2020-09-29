@@ -29,6 +29,7 @@ jobs:
       with:
         path: |
           ${{ env.CONAN_USER_HOME }}
+          ~/.cache/pip
         key: ${{ runner.os }}-${{ env.BUILD_TYPE }}-${{ hashFiles('CMakeLists.txt') }}-${{ hashFiles('cmake/Conan.cmake') }}
 
     - name: Create Build Environment
