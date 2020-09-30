@@ -153,6 +153,11 @@ The following compilers should work:
 	
 	</details>
 
+Note: Dependencies for WSL (Windows Subsystem for Linux) are set up the same as Ubuntu. In addition to the compiler that explained above, install the following to support Visual Studio's WSL extension ([based on this](https://docs.microsoft.com/en-us/cpp/linux/download-install-and-setup-the-linux-development-workload?view=vs-2019#linux-setup-ubuntu-on-wsl)):
+```
+sudo apt-get install gdb make ninja-build rsync zip
+```
+
 ### Optional Dependencies
 #### C++ Tools
   * [Doxygen](http://doxygen.nl/)
