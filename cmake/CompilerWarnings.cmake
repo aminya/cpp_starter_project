@@ -6,7 +6,19 @@ function(set_project_warnings project_name)
   # option(WARNINGS_AS_ERRORS "Treat compiler warnings as errors" TRUE)
 
   set(MSVC_WARNINGS
-      /W4 # Baseline reasonable warnings
+
+      # Pedantic
+      /Wall   # all warnings
+      /wd5044 # include path missing
+      /wd4710 # function not inlined
+      /wd4514 # unreferenced inline function has been removed
+      /wd5045 # spectre mitigation insertion warning
+      /wd4820 # 'bytes' bytes padding added after construct 'member_name'
+      /wd4626 # assignment operator was implicitly defined as deleted
+      /wd5027 # move operator was implicitly defined as deleted
+
+      # Relaxed:
+      # /W4 # Baseline reasonable warnings
       /w14242 # 'identifier': conversion from 'type1' to 'type1', possible loss of data
       /w14254 # 'operator': conversion from 'type1:field_bits' to 'type2:field_bits', possible loss of data
       /w14263 # 'function': member function does not override any base class virtual member function
