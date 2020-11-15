@@ -7,6 +7,11 @@ function(set_project_warnings project_name)
 
   set(MSVC_WARNINGS
 
+      # Disable warnings on external headers
+      /experimental:external
+      /external:W0
+      /external:anglebrackets
+
       # Pedantic
       /Wall   # all warnings
       /wd5044 # include path missing
