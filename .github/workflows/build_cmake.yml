@@ -11,6 +11,12 @@ env:
   CONAN_USER_HOME: "${{ github.workspace }}/conan-cache"
   CONAN_USER_HOME_SHORT: "${{ github.workspace }}/conan-cache/short"
 
+# Use a bash shell so we can use the same syntax for environment variable
+# access regardless of the host operating system
+defaults:
+  run:
+    shell: bash
+    
 jobs:
   build:
 
@@ -48,24 +54,14 @@ jobs:
         sudo update-alternatives --config conan
 
     - name: Configure CMake
-      # Use a bash shell so we can use the same syntax for environment variable
-      # access regardless of the host operating system
-      shell: bash
-      # Note the current convention is to use the -S and -B options here to specify source
-      # and build directories, but this is only available with CMake 3.13 and higher.
-      # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
-      #
-      # We need to source the profile file to make sure conan is in PATH
       run: |
         cmake -S . -B ./build -DCMAKE_BUILD_TYPE=$BUILD_TYPE
 
     - name: Build
-      shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: cmake --build ./build --config $BUILD_TYPE
 
     - name: Test
-      shell: bash
       # Execute tests defined by the CMake configuration.
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: |
